@@ -5,9 +5,22 @@
   line-height: 26px;
 }
 
+@mixin fixedPosition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
 @mixin flexCenter {
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+@mixin flexSpaceCenter {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -19,8 +32,10 @@
 }
 
 @mixin containerPadding {
-  padding: 1rem 5rem;
-
+  padding: 1.5rem 5rem;
+  @include lg {
+    padding: 1.5rem 3rem;
+  }
   @include sm {
     padding: 2rem;
   }
