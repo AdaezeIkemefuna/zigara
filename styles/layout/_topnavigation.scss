@@ -17,7 +17,8 @@
         font-size: $sm-font;
         font-weight: 400;
       }
-      .modal {
+      .modal,
+      .modal-mobile {
         position: relative;
       }
 
@@ -35,26 +36,7 @@
         align-items: flex-end;
         gap: 0.5rem;
       }
-      #login {
-        background-color: $primary-color;
-        border-radius: 10px;
-        color: $white-color;
-        padding: 0.5rem $lg-font;
-        transition: 0.3s ease all;
-        &:hover {
-          transform: scale(0.9);
-        }
-      }
-      #signup {
-        border-radius: 10px;
-        border: 1px solid $primary-color;
-        padding: 0.5rem $lg-font;
-        text-transform: initial;
-        transition: 0.3s ease all;
-        &:hover {
-          transform: scale(0.9);
-        }
-      }
+
       @include lg {
         display: none;
       }
@@ -66,57 +48,6 @@
       }
     }
   }
-
-  &__mobile--links {
-    display: none;
-
-    @include lg {
-      @include flexCenter;
-      flex-direction: column;
-      gap: 20px;
-      color: $secondary-color;
-      transition: all 1s;
-      animation: fadeIn linear 0.1s;
-      background-color: $primary-color;
-      z-index: 99999;
-      margin-top: 1.8rem;
-      padding: 1rem 0;
-
-      .mobile__nav__links {
-        p {
-          @include navigationLinks;
-          font-size: 1.13rem;
-        }
-      }
-
-      #login-mobile {
-        border: 1px solid $primary-color;
-        border-radius: 2px;
-        width: 146px;
-        height: 50px;
-        font-weight: 700;
-        font-size: $xs-font;
-        color: $primary-color;
-        line-height: 16px;
-        @include flexCenter;
-      }
-
-      #register-mobile {
-        @include navigationLinks;
-        @include flexCenter;
-        background-color: $primary-color;
-        border-radius: 1px;
-        font-size: $xs-font;
-        color: $white-color;
-        width: 231px;
-        height: 50px;
-      }
-    }
-  }
-
-  &__mobile--links--none {
-    display: none;
-  }
 }
 
 .navModals {
@@ -124,7 +55,7 @@
   top: 100%;
   width: 250px;
   left: 0;
-  z-index: 2;
+  z-index: 9999;
   border-radius: 15px;
   padding: $lg-font;
   margin-top: $xxs-font;
@@ -140,4 +71,44 @@
   li:first-child {
     margin-bottom: $sm-font;
   }
+}
+
+.navigation__mobile--links {
+  display: none;
+
+  @include lg {
+    @include flexCenter;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: $xl-font $lg-font $md-font;
+    flex-direction: column;
+    gap: 20px;
+    color: $secondary-color;
+    transition: all 1s;
+    animation: fadeIn linear 0.1s;
+    z-index: 999;
+    margin-top: 5.6rem;
+    border-bottom: 1px solid $light-gray;
+    background-color: $white-color;
+    a {
+      @include flexSpaceCenter;
+      width: 100%;
+      font-weight: 400;
+      text-transform: capitalize;
+      font-size: $sm-font;
+      margin-bottom: $lg-font;
+    }
+
+    #login,
+    #signup {
+      width: fit-content;
+      align-self: flex-start;
+      margin-bottom: $md-font;
+    }
+  }
+}
+
+.navigation__mobile--links--none {
+  display: none;
 }
